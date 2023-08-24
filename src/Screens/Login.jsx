@@ -3,6 +3,7 @@ import {
   Dimensions,
   SafeAreaView,
   ScrollView,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
@@ -17,39 +18,45 @@ const Login = () => {
   const [PassWord, setPassWord] = useState('');
 
   const handleSubmit = () => {
-    console.log(UserName)
-    console.log(PassWord)
-  }
+    console.log(UserName);
+    console.log(PassWord);
+  };
 
   return (
     <ScrollView>
+      <StatusBar
+        backgroundColor={"black"}
+        animated={true}
+        />
       <SafeAreaView style={styles.mainContainer}>
         <View style={{width: width - 50}}>
           <TextInput
             placeholder="UserName"
             placeholderTextColor={'black'}
             style={styles.inputField}
-            onChangeText={(name) => setUserName(name)}
-            ></TextInput>
+            onChangeText={name => setUserName(name)}
+            selectionColor={'gray'}
+            returnKeyType="next"></TextInput>
 
           <TextInput
             placeholder="Password"
             placeholderTextColor={'black'}
-            onChangeText={(passWord) => setPassWord(passWord)}
-            style={styles.inputField}></TextInput>
+            onChangeText={passWord => setPassWord(passWord)}
+            style={styles.inputField}
+            selectionColor={'gray'}
+            returnKeyType="next"></TextInput>
         </View>
 
         <View style={{marginTop: 10}}>
           <TouchableOpacity
             style={{
-              borderWidth: 1,
-              borderColor: 'black',
+              backgroundColor:'#068FFF',
               paddingHorizontal: 20,
               paddingVertical: 10,
+              borderRadius:10,
             }}
-              onPress={handleSubmit}
-            >
-            <Text style={styles.submitButton}>Submit</Text>
+            onPress={handleSubmit}>
+            <Text style={styles.submitButton}>LOGIN</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -65,12 +72,19 @@ const styles = StyleSheet.create({
     width,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor:'#F6F4EB'
   },
   inputField: {
     borderWidth: 0.8,
     borderColor: 'black',
     marginBottom: 20,
-    letterSpacing: 2,
+    letterSpacing: 3,
   },
-  submitButton: {fontSize: 23, fontWeight: '600'},
+  submitButton: {
+    fontSize: 18, 
+    // fontWeight: '600', 
+    color:'white',
+    letterSpacing:2,
+    fontFamily:'Roboto-Regular'
+  },
 });
