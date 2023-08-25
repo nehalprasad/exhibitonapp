@@ -4,18 +4,18 @@ import Header from '../Components/Header';
 
 const {height, width} = Dimensions.get('window');
 
-const Profile = () => {
+const Collection = () => {
   return (
     <SafeAreaView>
       <Header />
       <View style={styles.container}>
-        <Text style={{color:'black'}}>Profile</Text>
+        <Text style={{color:'black'}}>Collection</Text>
       </View>
     </SafeAreaView>
   );
 };
 
-export default Profile;
+export default Collection;
 
 const styles = StyleSheet.create({
   container: {

@@ -36,7 +36,7 @@ const Login = () => {
             style={styles.inputField}
             onChangeText={name => setUserName(name)}
             selectionColor={'gray'}
-            returnKeyType="next"></TextInput>
+            returnKeyType="next"/>
 
           <TextInput
             placeholder="Password"
@@ -44,7 +44,7 @@ const Login = () => {
             onChangeText={passWord => setPassWord(passWord)}
             style={styles.inputField}
             selectionColor={'gray'}
-            returnKeyType="next"></TextInput>
+            returnKeyType="next"/>
         </View>
 
         <View style={{marginTop: 10}}>

@@ -1,21 +1,21 @@
-import {Dimensions, StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import {Dimensions, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Header from '../Components/Header';
 
-const {height, width} = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
-const Profile = () => {
+const History = () => {
   return (
     <SafeAreaView>
-      <Header />
+        <Header />
       <View style={styles.container}>
-        <Text style={{color:'black'}}>Profile</Text>
+        <Text style={{color: 'black'}}>History</Text>
       </View>
     </SafeAreaView>
   );
 };
 
-export default Profile;
+export default History;
 
 const styles = StyleSheet.create({
   container: {
@@ -26,3 +26,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
 });
+
+
