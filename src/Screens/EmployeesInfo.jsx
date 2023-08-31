@@ -12,42 +12,56 @@ import {
   TextInput,
   Pressable,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import Header from '../Components/Header';
 import {RFValue} from 'react-native-responsive-fontsize';
 import Fonts from '../Constants/Fonts';
 import Colors from '../Constants/Colors';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import axios from 'axios';
 
 const {width, height} = Dimensions.get('window');
 
 const EmployeesData = [
-  {
-    id: 1,
-    name: 'Nehal Prasad',
-    emailId: 'nehal-prasad@outlook.com',
-    isactive: true,
-  },
-  {
-    id: 2,
-    name: 'Sarika',
-    emailId: 'sarika@outlook.com',
-    isactive: false,
-  },
-  {
-    id: 3,
-    name: 'Smita',
-    emailId: 'smita9038@outlook.com',
-    isactive: true,
-  },
+  // {
+  //   id: 1,
+  //   name: 'Nehal Prasad',
+  //   emailId: 'nehal-prasad@outlook.com',
+  //   isactive: true,
+  // },
+  // {
+  //   id: 2,
+  //   name: 'Sarika',
+  //   emailId: 'sarika@outlook.com',
+  //   isactive: false,
+  // },
+  // {
+  //   id: 3,
+  //   name: 'Smita',
+  //   emailId: 'smita9038@outlook.com',
+  //   isactive: true,
+  // },
 ];
 
 const EmployeesInfo = () => {
   const [SelectedEmployeeModalVisibility, setSelectedEmployeeModalVisibility] =
     useState(false);
-  const [SelectedEmployeeData, setSelectedEmployeeData] = useState([]);
+    const [EmployeesData, setEmployeesData] = useState([]);
+    // const [setEmployeeStatus, setEmployeeStatus] = useState(false)
+  // const [SelectedEmployeeData, setSelectedEmployeeData] = useState([]);
 
-  const [EmployeeStatus, setEmployeeStatus] = useState(false)
+  //  const [EmployeeStatus, setEmployeeStatus] = useState(false)
+
+  useEffect(() => {
+    try {
+      axios.get("http://192.168.29.47:8080/api/v1/users")
+        .then(resp => {
+          setEmployeesData(resp.data)
+          console.log(resp.data,)}) 
+        .catch(err => console.log(err))
+    } catch (error) {
+    }
+},[]) 
 
   const handleSubmit = () => {};
 
@@ -107,7 +121,7 @@ const EmployeesInfo = () => {
                 // onChangeText={date => setDateOfEvent(date)}
                 selectionColor={'gray'}
                 returnKeyType="next"
-                defaultValue={SelectedEmployeeData?.emailId}
+                defaultValue={SelectedEmployeeData?.email}
               />
 
               <Text
@@ -222,6 +236,7 @@ const EmployeesInfo = () => {
   };
 
   const EmployeeList = ({data}) => {
+    console.log(data)
     return (
       <ScrollView>
         <TouchableOpacity
@@ -230,11 +245,13 @@ const EmployeesInfo = () => {
             setSelectedEmployeeModalVisibility(true);
             setSelectedEmployeeData(data);
           }}>
-          <Text style={[styles.name, styles.comman]}>{data?.name}</Text>
-          <Text style={[styles.email, styles.comman]}>{data?.emailId}</Text>
+          <Text style={[styles.name, styles.comman]}>
+          {data?.name}</Text>
+          <Text style={[styles.email, styles.comman]}>
+          {data?.email}</Text>
           <Text
             style={[
-              styles.status,
+              styles.is_active,
               styles.comman,
               {textTransform: 'capitalize'},
             ]}>
