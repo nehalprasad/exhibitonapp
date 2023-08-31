@@ -98,7 +98,7 @@ const Home = ({navigation}) => {
                 fontFamily: Fonts.P_Bold,
                 letterSpacing: 1,
               }}>
-              Event Info
+              Exhibition Info
             </Text>
             <View style={{width: width - 150}}>
               <TextInput
@@ -227,7 +227,7 @@ const Home = ({navigation}) => {
                 fontFamily: Fonts.P_Bold,
                 letterSpacing: 1,
               }}>
-              Event Info
+              Exhibition Info
             </Text>
             <View style={{width: width - 150}}>
               <TextInput
@@ -297,7 +297,7 @@ const Home = ({navigation}) => {
               fontFamily: Fonts.R_Bold,
               letterSpacing: 1,
             }}>
-            Create New Event{' '}
+            Create New Exhibition{' '}
           </Text>
           <LottieView
             source={require('../Assets/animation/plus.json')}
