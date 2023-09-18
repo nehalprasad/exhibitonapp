@@ -4,7 +4,7 @@ import Header from '../Components/Header';
 
 const {width, height} = Dimensions.get('window');
 
-const History = () => {
+const History = ({navigation}) => {
   return (
     <SafeAreaView>
         <Header />

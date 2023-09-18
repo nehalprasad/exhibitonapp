@@ -18,14 +18,14 @@ const Header = () => {
       <LinearGradient
         style={styles.container}
         colors={[
-          '#48549c',
-          '#4c498c',
-          '#3097b6',
-          '#3dc3ba',
+          // '#48549c',
+          // '#4c498c',
+          // '#3097b6',
+          // '#3dc3ba',
           '#31aba0',
           '#37bba3',
-          '#37b7a0',
-          '#35b9ac',
+          // '#37b7a0',
+          // '#35b9ac',
         ]}>
         <View style={styles.logoBox}>
           <Image
@@ -48,13 +48,13 @@ export default Header;
 const styles = StyleSheet.create({
   mainContainer: {
     paddingTop:10,
-    height: height / 9,
+    height: height / 6,
     width,
     justifyContent: 'center',
   },
   container: {
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+    // borderBottomLeftRadius: 20,
+    // borderBottomRightRadius: 20,
     borderWidth: 1,
     borderColor: 'white',
     flexDirection: 'row',

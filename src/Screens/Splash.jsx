@@ -4,7 +4,7 @@ import LottieView from 'lottie-react-native'
 
 const {height, width} = Dimensions.get('window')
 
-const Splash = () => {
+const Splash = ({navigation}) => {
   return (
    <SafeAreaView style={styles.mainContainer}>
         <Image

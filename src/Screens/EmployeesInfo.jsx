@@ -43,7 +43,7 @@ const EmployeesData = [
   // },
 ];
 
-const EmployeesInfo = () => {
+const EmployeesInfo = ({navigation}) => {
   const [SelectedEmployeeModalVisibility, setSelectedEmployeeModalVisibility] =
     useState(false);
     const [EmployeesData, setEmployeesData] = useState([]);
