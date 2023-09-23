@@ -2,7 +2,6 @@ import {StyleSheet, Text, View, Image, Dimensions} from 'react-native';
 import React, {useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../Screens/HomeScreen/Home';
-
 import {RFValue} from 'react-native-responsive-fontsize';
 import EmployeesInfo from '../Screens/EmployeesInfo';
 import History from '../Screens/History';

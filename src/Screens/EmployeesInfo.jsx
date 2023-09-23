@@ -47,8 +47,8 @@ const EmployeesInfo = ({navigation}) => {
   const [SelectedEmployeeModalVisibility, setSelectedEmployeeModalVisibility] =
     useState(false);
     const [EmployeesData, setEmployeesData] = useState([]);
-    // const [setEmployeeStatus, setEmployeeStatus] = useState(false)
-  // const [SelectedEmployeeData, setSelectedEmployeeData] = useState([]);
+    //  const [setEmployeeStatus, setEmployeeStatus] = useState(true)
+   const [SelectedEmployeeData, setSelectedEmployeeData] = useState([]);
 
   //  const [EmployeeStatus, setEmployeeStatus] = useState(false)
 
@@ -83,9 +83,7 @@ const EmployeesInfo = ({navigation}) => {
               }}
               onPress={() => {
                 setSelectedEmployeeData(null);
-                setSelectedEmployeeModalVisibility(
-                  !SelectedEmployeeModalVisibility,
-                );
+                setSelectedEmployeeModalVisibility(!SelectedEmployeeModalVisibility);
               }}>
               <Image
                 source={{

@@ -17,7 +17,6 @@ import React, {useState, useEffect} from 'react';
 import Header from '../../Components/Header';
 import {RFValue} from 'react-native-responsive-fontsize';
 import LottieView from 'lottie-react-native';
-
 import Colors from '../../Constants/Colors';
 import Fonts from '../../Constants/Fonts';
 import { useNavigation } from '@react-navigation/native';
@@ -56,8 +55,7 @@ const Home = ({navigation}) => {
   //   useState(false);
   // const [SelectedEventData, setSelectedEventData] = useState([]);
 
-
-  const handleSubmit = () => {};
+    const handleSubmit = () => {};
 
   // useEffect(() => {
   //   const interval = setInterval(() => {
@@ -234,8 +232,7 @@ const Home = ({navigation}) => {
   //     </Modal>
   //   );
   // };
-
-  return (
+ return (
     <SafeAreaView style={styles.container}>
       <Header />
       {/* <View style={styles.container}> */}
@@ -256,6 +253,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+ 
   },
   modalView: {
     height: height / 2.9,
@@ -269,6 +267,7 @@ const styles = StyleSheet.create({
     shadowOffset: {
       width: 0,
       height: 2,
+ 
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
@@ -290,11 +289,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     letterSpacing: 3,
     color: 'black',
-  },
+   },
   submitButton: {
     fontSize: 18,
     color: Colors?.white,
     letterSpacing: 2,
     fontFamily: Fonts.R_Regular,
+  
   },
 });
