@@ -1,18 +1,13 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import Navigator from './src/Components/Navigator';
-
-
+import Navigator from './src/Process/Navigator';
+import {AppProvider} from './AppContext';
 
 const App = () => {
   return (
-    <>
-     <NavigationContainer>
-       <Navigator />
-     </NavigationContainer> 
-    {/* <Employees /> */}
-  </>
-     )
-}
-export default App
- 
+    <AppProvider>
+      <Navigator/>
+    </AppProvider>
+  );
+};
+
+export default App;

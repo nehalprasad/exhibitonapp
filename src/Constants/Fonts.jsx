@@ -1,4 +1,4 @@
-const Fonts = {
+export const Fonts = {
     O_Light : 'OpenSans-Light',
     O_Medium : 'OpenSans-Medium',
     O_Regular : 'OpenSans-Regular',
@@ -19,5 +19,3 @@ const Fonts = {
     R_Regular : 'Roboto-Regular',
     R_Bold : 'Roboto-Bold',
 }
-
-export default Fonts
