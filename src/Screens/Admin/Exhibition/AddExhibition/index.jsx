@@ -8,40 +8,49 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import React, { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from './style';
+import { API_CALL } from 'Constants';
 
-const AddEmployees = () => {
+const AddExhibition = ({navigation}) => {
   const [Name, setName] = useState('');
-  const [Email, setEmail] = useState('');
-  const [Error, setError] = useState(false);
-  const [Password, setPassword] = useState('');
-  const [IsCheck, setIsCheck] = useState(false);
+  const [ExbPlace, setExbPlace] = useState('');
+  const [DaysOfExhibition, setDaysOfExhibition] = useState('');
 
+  const [IsCheck, setIsCheck] = useState(false);
+  const [Error, setError] = useState(false)
   // Separate state variables for focus
-  const [isNameFocused, setIsNameFocused] = useState(false);
-  const [isEmailFocused, setIsEmailFocused] = useState(false);
-  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [IsNameFocused, setIsNameFocused] = useState(false);
+  const [IsExbPlaceFocused, setIsExbPlaceFocused] = useState(false);
+  const [IsDaysOfExhibitionFocused, setIsDaysOfExhibitionFocused] = useState(false);
 
   const handleSubmit = async () => {
     setError(false);
     setIsCheck(true);
     try {
-      console.log('nehal');
       const PayLoad = {
         name: Name,
-        email: Email,
-        password: Password,
+        exbplace: ExbPlace,
+        days_of_exhibition: DaysOfExhibition,
+        status: true,  
       };
 
+      const AccessToken = await AsyncStorage.getItem('AccessToken')
       console.log(PayLoad);
       const response = await axios.post(
-        'https://a564-2405-201-100c-8057-d282-35dd-cbe9-3ee1.ngrok-free.app/api/v1/users',
-        PayLoad
-      );
-      console.log(response.data);
+        API_CALL.Exhibition,
+        PayLoad,{
+          headers: { 
+            'Authorization' : `Bearer ${JSON.parse(AccessToken)}`
+          }
+        }
+      )
+      if(!!response.data){
+        navigation.navigate('Exhibition')
+      }
     } catch (error) {
       console.log(error, '2');
       setError(true);
@@ -51,7 +60,7 @@ const AddEmployees = () => {
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <Text style={styles.title}>Add New Employee</Text>
+      <Text style={styles.title}>Create New Event</Text>
       <View>
         <TextInput
           name="Name"
@@ -61,47 +70,47 @@ const AddEmployees = () => {
           autoCapitalize={'none'}
           style={[
             styles.placeHolderStyle,
-            { borderColor: isNameFocused ? '#f0f' : 'black' },
+            { borderColor: IsNameFocused ? '#f0f' : 'black' },
           ]}
-          placeholder="Name of the Employee"
+          placeholder="Event Name"
           onChangeText={(name) => setName(name)}
         />
 
         <TextInput
-          name="Email"
-          onFocus={() => setIsEmailFocused(true)}
-          onBlur={() => setIsEmailFocused(false)}
+          onFocus={() => setIsExbPlaceFocused(true)}
+          onBlur={() => setIsExbPlaceFocused(false)}
           placeholderTextColor={'gray'}
           autoCapitalize={'none'}
           style={[
             styles.placeHolderStyle,
-            { borderColor: isEmailFocused ? '#f0f' : 'black' },
+            { borderColor: IsExbPlaceFocused ? '#f0f' : 'black' },
           ]}
-          placeholder="Email of the Employee"
-          onChangeText={(email) => setEmail(email)}
+          placeholder="Exhibition Place"
+          onChangeText={(exbPlace) => setExbPlace(exbPlace)}
         />
 
         <TextInput
           name="Password"
-          onFocus={() => setIsPasswordFocused(true)}
-          onBlur={() => setIsPasswordFocused(false)}
+          onFocus={() => setIsDaysOfExhibitionFocused(true)}
+          onBlur={() => setIsDaysOfExhibitionFocused(false)}
+          keyboardType='number-pad'
           placeholderTextColor={'gray'}
           autoCapitalize={'none'}
           style={[
             styles.placeHolderStyle,
-            { borderColor: isPasswordFocused ? '#f0f' : 'black' },
+            { borderColor: IsDaysOfExhibitionFocused ? '#f0f' : 'black' },
           ]}
-          placeholder="Password of the Employee"
-          onChangeText={(password) => setPassword(password)}
+          placeholder="Days of Exhibition"
+          onChangeText={(dayOfExhibition) => setDaysOfExhibition(dayOfExhibition)}
         />
       </View>
 
       <TouchableOpacity
         style={styles.button}
         onPress={handleSubmit}
-        disabled={!Name || !Password || !Email}
+        disabled={!Name || !ExbPlace || !DaysOfExhibition}
       >
-        <Text style={styles.buttonText}>Add</Text>
+        <Text style={styles.buttonText}>Create</Text>
       </TouchableOpacity>
 
       {Error && (
@@ -129,4 +138,4 @@ const AddEmployees = () => {
   );
 };
 
-export default AddEmployees;
+export default AddExhibition;

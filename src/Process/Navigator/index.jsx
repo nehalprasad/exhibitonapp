@@ -2,24 +2,23 @@ import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {LogBox} from 'react-native';
-import {Text} from 'react-native';
-
 import {useAppContext} from '../../../AppContext';
 
 import {Product} from 'User';
 import {Login, Splash} from 'Public';
-import {Events, Profile, TodayCollection} from 'Admin';
+import {Exhibition, Profile, TodayCollection, AddEmployees, AddExhibition} from 'Admin';
 
 import UserTabs from './User/UserTabs';
 import AdminTabs from './Admin/AdminTabs';
+import Header from './Header';
+import Menu from 'Icons'
 
 const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
   const [Loading, setLoading] = useState(true);
-  const [AccessToken , setAccessToken] = useState<string | null>(null);
-  const [Role , setRole] = useState<string | null>(null);
+  const [AccessToken , setAccessToken] = useState(null);
+  const [Role , setRole] = useState(null);
   const {state} = useAppContext();
 
 useEffect(() => {
@@ -70,9 +69,22 @@ useEffect(() => {
         {(state.Role === 'admin' || Role === 'admin') && (
           <Stack.Group>
             <Stack.Screen name="Admin" component={AdminTabs} />
-            <Stack.Screen name="Events" component={Events} />
+            <Stack.Screen name="Add Exhibition" component={AddExhibition} />
+            <Stack.Screen name="Exhibition" component={Exhibition} options={() =>
+                Header({
+                  showBackArrow:true,
+                  rightIcon: (
+                    <Menu
+                      width={25}
+                      height={25}
+                      fill={'black'}
+                    />
+                  ),
+                })
+          }/>
             <Stack.Screen name="Profile" component={Profile} />
             <Stack.Screen name="TodayCollection" component={TodayCollection} />
+            <Stack.Screen name="Add Employees" component={AddEmployees} />
           </Stack.Group>
         )}
       </Stack.Navigator>

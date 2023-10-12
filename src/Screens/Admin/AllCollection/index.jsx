@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 const AllCollection = () => {
   return (
-    <View>
+    <SafeAreaView>
       <Text>AllCollection</Text>
-    </View>
+    </SafeAreaView>
   )
 }
 

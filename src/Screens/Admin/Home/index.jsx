@@ -1,7 +1,7 @@
 import { SafeAreaView } from 'react-native'
 import React, { useEffect } from 'react'
 import { useAppContext } from '../../../../AppContext'; 
-import Events from '../Events';
+import Events from '../Exhibition';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = () => {

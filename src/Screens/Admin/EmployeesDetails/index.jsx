@@ -1,19 +1,22 @@
-import { FlatList, SafeAreaView, Text, View, ScrollView, TouchableOpacity } from 'react-native'
+import { FlatList, SafeAreaView, Text, View, ScrollView, TouchableOpacity, Dimensions } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import styles from './style'
 import { API_CALL } from 'Constants'
+import { RFValue } from 'react-native-responsive-fontsize'
 
-const EmployeesDetails = () => {
+const { height, width} = Dimensions.get('window')
+
+const EmployeesDetails = ({navigation}) => {
   const [EmployeesInfo, setEmployeesInfo] = useState([])
   
   useEffect(() => {
         const fetchData = async function(){
-          await axios.get(API_CALL.getAllUsers)
+          await axios.get(API_CALL.Users)
                 .then((resp) => {
                 const API_DATA = resp.data
-                const User_Data = API_DATA?.filter(user => user?.role !== 'admin')
+                const User_Data = API_DATA?.filter(user => user?.role !== 'admin' && !!user?.name)
                 setEmployeesInfo(User_Data)
                 })
                 .catch(err => console.log(err))
@@ -26,15 +29,6 @@ const EmployeesDetails = () => {
         }
   },[])
 
-const renderItem = ({item}) => {
-  return(
-    <View>
-      <Text>{item.name}</Text>
-      <Text>{item.email}</Text>
-      <Text>{item.is_active}</Text>
-    </View>
-  )
-}
 
 const EmployeeList = ({data}) => {
   return (
@@ -89,8 +83,8 @@ const HeaderComponent = () => {
             keyExtractor={item => item.id}
           />
         </ScrollView>
-        <TouchableOpacity style={{borderWidth:1, paddingHorizontal:20, paddingVertical:10}}>
-          <Text>Add New +</Text>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Add Employees")}>
+          <Text style={styles.buttonText}>Add New +</Text>
         </TouchableOpacity>
     </SafeAreaView>
   )
