@@ -40,7 +40,6 @@ const Profile = ({navigation}) => {
           await axios
             .request(config)
             .then(resp => {
-              // console.log(resp.data, 'err');
               setProfileData(resp.data);
             })
             .catch(err => { });

@@ -15,16 +15,15 @@ import {
   } from 'react-native';
   import React, {useState} from 'react';
   import axios from 'axios';
-  
 
   import {useAppContext} from '../../../AppContext';
   import {API_CALL, Fonts} from 'Constants';
   
   import styles from './style'
-
-  const {height, width} = Dimensions.get('window');
   
-  const Login = ({navigation}) => {
+  const {height , width} = Dimensions.get('window')
+
+  const Login = ({navigation}:  any) => {
     const {state, setState} = useAppContext();
   
     const [UserName, setUserName] = useState('');
@@ -54,10 +53,9 @@ import {
           await axios
             .get(API_CALL.Users)
             .then(resp => {
-              console.log(resp.data, 'news');
               const allUserData = resp.data;
               const filteredUserData = allUserData?.filter(
-                user => user.id === response.data.userId,
+                (user: any) => user.id === response.data.userId,
               );
               setTimeout(() => {
                 storeData(
@@ -81,7 +79,7 @@ import {
       }
     };
   
-    const storeData = async (AccessToken, UserId, Role, Email) => {
+    const storeData = async (AccessToken : any, UserId : any, Role : any, Email: any) => {
       try {
         setState({...state, AccessToken, Role, UserId, Email});
         setIsLogin(false);
@@ -96,7 +94,7 @@ import {
       }
     };
   
-    const FocusInputData = item => {
+    const FocusInputData = (item : any) => {
       setFocusInput(item._dispatchInstances.memoizedProps.name);
     };
   
@@ -122,6 +120,7 @@ import {
                   {
                     textTransform: 'lowercase',
                     borderColor: FocusInput === 'username' ? 'red' : 'gray',
+                    color : 'black'
                   },
                 ]}
                 onChangeText={name => setUserName(name)}
@@ -145,7 +144,9 @@ import {
                 onChangeText={passWord => setPassWord(passWord)}
                 style={[
                   styles.inputField,
-                  {borderColor: FocusInput === 'password' ? 'red' : 'gray'},
+                  {borderColor: FocusInput === 'password' ? 'red' : 'gray',
+                  color : 'black'
+                },
                 ]}
                 selectionColor={'gray'}
                 name="password"

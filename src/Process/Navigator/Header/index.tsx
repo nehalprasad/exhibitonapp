@@ -2,13 +2,11 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { Back } from 'Icons';
-// import { colors, defaults } from 'Theme';
+import { Menu, Back } from 'Icons';
 
 import styles from './style';
 
-const Header = (props) => {
-  const navigation = useNavigation();
+const Header = (props: any) => {
   const {
     headerStyle,
     headerTitleStyle,
@@ -31,11 +29,9 @@ const Header = (props) => {
     headerStyle: headerStyle ? headerStyle : styles.headerStyle,
     headerLeft: () =>
       showBackArrow ? (
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => {}}>
           <Back
-            // width={defaults.icon.width}
-            // height={defaults.icon.height}
-            // fill={colors.black}
+           
           />
         </TouchableOpacity>
       ) : (
@@ -54,4 +50,4 @@ const Header = (props) => {
   };
 };
 
-export default Header;
+export default Header

@@ -38,14 +38,11 @@ const Login = ({navigation}) => {
       console.log('nehal');
       const PayLoad = {
         username: UserName.toLowerCase(),
-        password: PassWord
+        password: PassWord,
       };
 
       console.log(PayLoad);
-      const response = await axios.post(
-        API_CALL.LogIn,
-        PayLoad,
-      );
+      const response = await axios.post(API_CALL.LogIn, PayLoad);
       console.log(response.data);
       if (!!response.data) {
         await axios
@@ -119,6 +116,7 @@ const Login = ({navigation}) => {
                 {
                   textTransform: 'lowercase',
                   borderColor: FocusInput === 'username' ? 'red' : 'gray',
+                  color: 'black',
                 },
               ]}
               onChangeText={name => setUserName(name)}
@@ -142,7 +140,10 @@ const Login = ({navigation}) => {
               onChangeText={passWord => setPassWord(passWord)}
               style={[
                 styles.inputField,
-                {borderColor: FocusInput === 'password' ? 'red' : 'gray'},
+                {
+                  borderColor: FocusInput === 'password' ? 'red' : 'gray',
+                  color: 'black',
+                },
               ]}
               selectionColor={'gray'}
               name="password"
@@ -202,14 +203,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   inputFieldWrapper: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    // shadowColor: '#000',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
+    // elevation: 5,
   },
   inputField: {
     borderColor: 'black',

@@ -13,15 +13,15 @@ import { API_CALL } from 'Constants';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const ProductCard = ({item, onIncrement, onDecrement}) => {
+const ProductCard = ({item, onIncrement, onDecrement, initialValue}) => {
   return (
     <View style={styles.productCard}>
-      <Image source={{uri: item.image}} style={styles.productImage} />
+      {/* <Image source={{uri: item.image}} style={styles.productImage} /> */}
       <View style={styles.productInfo}>
         <Text style={styles.productName}>{item.name}</Text>
         <Text style={styles.productDescription}>{item.description}</Text>
         <Text style={styles.productPrice}>
-          {/* ${item.price.toFixed(2)}{' '} */}
+          ${item?.prices * initialValue} {' '}
           <Text style={styles.productPriceText}>per item</Text>
         </Text>
       </View>
@@ -29,7 +29,7 @@ const ProductCard = ({item, onIncrement, onDecrement}) => {
         <TouchableOpacity style={styles.amountButton} onPress={onDecrement}>
           <Text style={styles.amountButtonText}>-</Text>
         </TouchableOpacity>
-        <Text style={styles.amountText}>{item.amount}</Text>
+        <Text style={styles.amountText}>{initialValue}</Text>
         <TouchableOpacity style={styles.amountButton} onPress={onIncrement}>
           <Text style={styles.amountButtonText}>+</Text>
         </TouchableOpacity>
@@ -40,6 +40,7 @@ const ProductCard = ({item, onIncrement, onDecrement}) => {
 
 const Items = () => {
   const [ItemList, setItemList] = useState();
+  const [initialValue , setInitialValue] = useState(0)
 
   const fetchData = async function () {
     const AccessToken = await AsyncStorage.getItem('AccessToken');
@@ -68,23 +69,25 @@ const Items = () => {
   }, []);
 
   const handleIncrement = item => {
-    setProducts(
-      products.map(product =>
-        product.id === item.id
-          ? {...product, amount: product.amount + 1}
-          : product,
-      ),
-    );
+    // setProducts(
+    //   products.map(product =>
+    //     product.id === item.id
+    //       ? {...product, amount: product.amount + 1}
+    //       : product,
+    //   ),
+    // );
+    setInitialValue(initialValue+1)
   };
 
   const handleDecrement = item => {
-    setProducts(
-      products.map(product =>
-        product.id === item.id
-          ? {...product, amount: Math.max(0, product.amount - 1)}
-          : product,
-      ),
-    );
+    // setProducts(
+    //   products.map(product =>
+    //     product.id === item.id
+    //       ? {...product, amount: Math.max(0, product.amount - 1)}
+    //       : product,
+    //   ),
+    // );
+  setInitialValue(initialValue - 1)
   };
 
   const renderProductItem = ({item}) => (
@@ -92,6 +95,7 @@ const Items = () => {
       item={item}
       onIncrement={() => handleIncrement(item)}
       onDecrement={() => handleDecrement(item)}
+      initialValue={initialValue}
     />
   );
 

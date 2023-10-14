@@ -1,4 +1,9 @@
-export default({
+import { Dimensions, StyleSheet } from "react-native";
+import { Fonts } from "../../../Constants";
+
+const {height , width} = Dimensions.get('window')
+
+export default StyleSheet.create({
     mainContainer: {
       height,
       width,
@@ -7,13 +12,13 @@ export default({
       backgroundColor: '#fff',
     },
     inputFieldWrapper: {
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
+      // shadowColor: '#000',
+      // shadowOffset: {
+      //   width: 0,
+      //   height: 2,
+      // },
+      // shadowOpacity: 0.25,
+      // shadowRadius: 3.84,
       elevation: 5,
     },
     inputField: {
@@ -24,10 +29,9 @@ export default({
       borderRadius: 10,
       paddingHorizontal: 10,
       elevation: 5,
-  
+      color:'black',
       fontSize: 16,
       borderWidth: 0.8,
-      borderColor: 'gray',
       fontFamily: Fonts.O_ExtraBold,
     },
     inputHeading: {

@@ -8,7 +8,7 @@ export default {
   mainContainer: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor:'white'
+    backgroundColor: 'white',
   },
   title: {
     fontSize: 23,
@@ -18,14 +18,14 @@ export default {
   name: {
     color: 'black',
     paddingLeft: 15,
-    width: width / 2.3,
+    width: width / 1.7,
     fontFamily: Fonts.P_Bold,
     fontSize: RFValue(17, height),
   },
   email: {
     color: 'black',
-    width: width / 2.3,
-    textAlign: 'center',
+    width: width / 1.7,
+    textAlign: 'left',
     fontFamily: Fonts.P_Bold,
     fontSize: RFValue(17, height),
   },
@@ -48,6 +48,7 @@ export default {
     borderColor: 'black',
     justifyContent: 'space-between',
     paddingVertical: 10,
+    marginHorizontal: 10,
   },
   centeredView: {
     flex: 1,
@@ -102,5 +103,42 @@ export default {
     marginBottom: 20,
     borderRadius: 10,
   },
-  buttonText:{color:'white', letterSpacing:2, fontWeight:700, fontSize:RFValue(18, height)}
-}
+  buttonText: {
+    color: 'white',
+    letterSpacing: 2,
+    fontWeight: 700,
+    fontSize: RFValue(18, height),
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    // alignItems: 'center',
+    marginTop: 22,
+  
+  },
+  modalView: {
+    marginHorizontal:10,
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalTitle:{color: 'black', marginVertical: 20, fontSize: 19},
+  modalInput:{
+    color: 'black',
+    borderWidth: 0.7,
+    width: width - 80,
+    marginBottom: 10,
+    paddingHorizontal:10,
+    borderRadius:7
+  },
+};

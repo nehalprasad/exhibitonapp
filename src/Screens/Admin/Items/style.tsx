@@ -40,10 +40,11 @@ export default ({
       fontSize: 18,
       fontWeight: 'bold',
       marginBottom: 4,
+      color:'black'
     },
     productDescription: {
       fontSize: 14,
-      color: '#666',
+      color: 'black',
       marginBottom: 4,
     },
     productPrice: {
@@ -76,6 +77,7 @@ export default ({
       fontSize: 18,
       fontWeight: 'bold',
       marginHorizontal: 16,
+      color:'black'
     },
     continueButton: {
       position: 'absolute',

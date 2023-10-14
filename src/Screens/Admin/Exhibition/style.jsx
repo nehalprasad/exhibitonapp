@@ -46,6 +46,7 @@ export default({
       fontSize: 16,
       borderWidth: 0.8,
       borderColor: 'gray',
+      color:'black'
     //   fontFamily: Fonts.O_ExtraBold,
     },
     eventContainer: {
